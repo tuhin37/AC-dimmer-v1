@@ -9,12 +9,11 @@ void setup() {
     Serial.begin(9600);
 
     pinMode(TRIGG_PIN, OUTPUT);
-    delay(10000);
+    //Timer1.initialize(1000); //1ms interrupt
+    //Timer1.attachInterrupt(timerCallback);
+    digitalWrite(TRIGG_PIN, HIGH);
 
     attachInterrupt(digitalPinToInterrupt(2), count, RISING);
-    
-    Timer1.initialize(1000); //1ms interrupt
-    Timer1.attachInterrupt(timerCallback);
 }
 
 
@@ -24,18 +23,20 @@ void loop() {
 
 
 void count() {
-    del=0;
+    digitalWrite(TRIGG_PIN, LOW);
+    delayMicroseconds(100*intencity);
+    digitalWrite(TRIGG_PIN, HIGH);
 }
 
-void timerCallback() {
-    del++;
-    if(del>=intencity) {
-        digitalWrite(TRIGG_PIN, HIGH);
-    }
-    else {
-        digitalWrite(TRIGG_PIN, LOW);
-    }
-}
+// void timerCallback() {
+//     del++;
+//     if(del>=intencity) {
+//         digitalWrite(TRIGG_PIN, HIGH);
+//     }
+//     else {
+//         digitalWrite(TRIGG_PIN, LOW);
+//     }
+// }
 
 
 

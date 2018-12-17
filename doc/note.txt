@@ -1,0 +1,6 @@
+Results: 
+1. dimming happened with flicker.
+2. later used delayMicroseconds() function then flicker stopped and dimming also worked but could not get it to dim all the way.
+
+Next action item
+ordered few ready made dimmer, will reverse engineer them and check
